@@ -1,0 +1,7 @@
+#ifndef __OWE_H_
+#define __OWE_H_
+
+#define OWE_NAMESPACE_BEGIN namespace Owe {
+#define OWE_NAMESPACE_END }
+
+#endif

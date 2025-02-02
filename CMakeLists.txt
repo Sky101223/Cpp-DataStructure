@@ -22,5 +22,16 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 # 设置头文件目录
 include_directories(include)
 
+# # 设置库
+# add_library(DataStructureLib STATIC
+# src/Array.cpp
+# )
+
+# # 设置库的头文件目录
+# target_include_directories(DataStructureLib PUBLIC include)
+
 # 执行文件
 add_executable(${PROJECT_NAME} src/Main.cpp)
+
+# # 链接头文件
+# target_link_libraries(${PROJECT_NAME} DataStructureLib)
