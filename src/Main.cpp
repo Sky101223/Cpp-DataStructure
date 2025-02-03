@@ -26,10 +26,10 @@ int main(void)
         std::cout << *i << std::endl;
     }
 
-    std::reverse(hello.begin(), hello.end());
-    for (char& i : hello)
+    for (Owe::Array<char, 13>::reverse_iterator i = hello.rbegin();
+        i != hello.rend(); ++i)
     {
-        std::cout << i;
+        std::cout << *i;
     }
     std::cout << std::endl;
 

@@ -108,6 +108,16 @@ public:
         m_current += _n;
         return *this;
     }
+
+    bool operator==(const ReverseIterator& _another) const
+    {
+        return (this->m_current == _another.m_current);
+    }
+
+    bool operator!=(const ReverseIterator& _another) const
+    {
+        return !(operator==(_another));
+    }
 private:
     iterator_type m_current;
 };
