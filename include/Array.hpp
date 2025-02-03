@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <stdexcept>
 #include <initializer_list>
+#include <tuple>
 
 #include "Owe.h"
 #include "ReverseIterator.hpp"
@@ -570,24 +571,22 @@ const _Type&& get(const Array<_Type, _Size>&& _array)
 {
     return std::move(_array[_Index]);
 }
+OWE_NAMESPACE_END
 
 // 辅助
+template <std::size_t _Index, typename _Type, std::size_t _Size>
+class std::tuple_element<_Index, Owe::Array<_Type, _Size>>
+{
+public:
+    using type = _Type;
+};
 
-// template <std::size_t _Index, class _Type>
-// class tuple_element;
+template <typename _Type, std::size_t _Size>
+class std::tuple_size<Owe::Array<_Type, _Size>> : public std::integral_constant<std::size_t, _Size>
+{
+};
 
-// template <std::size_t _Index, typename _Type, std::size_t _Size>
-// class tuple_element<_Index, Array<_Type, _Size>>
-// {
-// public:
-//     using type = _Type;
-// };
-
-// template <typename _Type, std::size_t _Size>
-// class tuple_size<Array<_Type, _Size>> : public std::integral_constant<std::size_t, _Size>
-// {
-// };
-
+OWE_NAMESPACE_BEGIN
 /// @brief 对空Array的特化
 /// @tparam _Type 
 template <typename _Type>
