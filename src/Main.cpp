@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Array.hpp"
+#include "ReverseIterator.hpp"
 #include "Memory.hpp"
 
 int main(void)
