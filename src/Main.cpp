@@ -2,9 +2,11 @@
 /// 是否能正常运行，是否能过编译
 
 #include <iostream>
-#include "Array.hpp"
-#include "ReverseIterator.hpp"
+#include <algorithm>
+
 #include "Memory.hpp"
+#include "ReverseIterator.hpp"
+#include "Array.hpp"
 
 int main(void)
 {
@@ -23,6 +25,13 @@ int main(void)
     {
         std::cout << *i << std::endl;
     }
+
+    std::reverse(hello.begin(), hello.end());
+    for (char& i : hello)
+    {
+        std::cout << i;
+    }
+    std::cout << std::endl;
 
     return 0;
 }

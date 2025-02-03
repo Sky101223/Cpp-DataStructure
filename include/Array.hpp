@@ -6,6 +6,7 @@
 #include <initializer_list>
 
 #include "Owe.h"
+#include "ReverseIterator.hpp"
 
 OWE_NAMESPACE_BEGIN
 
@@ -250,8 +251,8 @@ public:
     using const_pointer = const value_type*;
     using iterator = _Array_Inerator<value_type>;
     using const_iterator = _Array_Const_Iterator<value_type>;
-    using reverse_iterator = std::reverse_iterator<iterator>;
-    using const_reverse_iterator = std::reverse_iterator<const_iterator>;
+    using reverse_iterator = Owe::ReverseIterator<iterator>;
+    using const_reverse_iterator = Owe::ReverseIterator<const_iterator>;
 public:
     Array(std::initializer_list<_Type> _list)
     {

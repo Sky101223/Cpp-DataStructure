@@ -1,6 +1,9 @@
 #ifndef __REVERSR_ITERATOR_HPP_
 #define __REVERSR_ITERATOR_HPP_
 
+#include "Owe.h"
+
+OWE_NAMESPACE_BEGIN
 template <typename _Iterator>
 class ReverseIterator
 {
@@ -109,4 +112,5 @@ private:
     iterator_type m_current;
 };
 
+OWE_NAMESPACE_END
 #endif
