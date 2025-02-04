@@ -420,16 +420,25 @@ public:
         return rbegin();
     }
 
+    /// @brief 返回指向的逆向迭代器
+    /// @param  
+    /// @return 
     reverse_iterator rend(void) noexcept
     {
         return static_cast<reverse_iterator>(begin());
     }
 
+    /// @brief 返回指向的逆向迭代器
+    /// @param  
+    /// @return 
     const_reverse_iterator rend(void) const noexcept
     {
         return static_cast<const_reverse_iterator>(begin());
     }
 
+    /// @brief 返回指向的逆向迭代器
+    /// @param  
+    /// @return 
     const_reverse_iterator crend(void) const noexcept
     {
         return rend();
@@ -602,8 +611,8 @@ public:
     using const_pointer = const value_type*;
     using iterator = _Array_Inerator<value_type>;
     using const_iterator = _Array_Const_Iterator<value_type>;
-    using reverse_iterator = std::reverse_iterator<iterator>;
-    using const_reverse_iterator = std::reverse_iterator<const_iterator>;
+    using reverse_iterator = Owe::ReverseIterator<iterator>;
+    using const_reverse_iterator = Owe::ReverseIterator<const_iterator>;
 public:
     // 元素访问
 
