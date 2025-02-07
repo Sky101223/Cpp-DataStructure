@@ -4,8 +4,6 @@
 #include <iostream>
 #include <algorithm>
 
-// #define NO_REPEAT_INSERTION // 如果你希望AVL树可以插入重复的值
-
 #include "Memory.hpp"
 #include "ReverseIterator.hpp"
 #include "Array.hpp"

@@ -90,10 +90,12 @@ public:
             std::cout << "Tree is empty." << std::endl;
             return;
         }
-        std::cout << "Root: " << m_root->key << std::endl;
-        std::cout << "Number of Nodes: " << getNodesNum() << std::endl;
+        std::cout << "R = " << m_root->key << ", ";
+        std::cout << "N = " << getNodesNum() << ", ";
+        std::cout << "D = " << getDepth() << std::endl;
         std::system("chcp 65001");
         m_printTree(m_root, "·", true);
+        std::cout << std::endl;
     }
 
     /// @brief 获取深度
@@ -110,10 +112,11 @@ private:
     struct Node {
         _T key;
         int32_t height;
+        uint32_t count;
         std::shared_ptr<Node> LNode;
         std::shared_ptr<Node> RNode;
         Node(_T _object)
-            : key(_object), LNode(nullptr), RNode(nullptr), height(1) {
+            : key(_object), LNode(nullptr), RNode(nullptr), count(1), height(1) {
         }
     };
 
@@ -187,16 +190,11 @@ private:
         if (_object < _node->key) {
             _node->LNode = m_insert(_node->LNode, _object);
         }
-#ifndef NO_REPEAT_INSERTION
-        else if (_object >= _node->key)
-#else
-        else if (_object > _node->key)
-#endif
-        {
+        else if (_object > _node->key) {
             _node->RNode = m_insert(_node->RNode, _object);
         }
         else {
-            m_nodeNum--;
+            _node->count++;
             return _node;
         }
 
@@ -334,6 +332,11 @@ private:
             _node->RNode = m_delete(_node->RNode, _key);
         }
         else {
+            if (_node->count > 1) {
+                _node->count--;
+                return _node;
+            }
+
             if (_node->LNode == nullptr || _node->RNode == nullptr) {
                 std::shared_ptr<Node> temp = _node->LNode ? _node->LNode : _node->RNode;
 
@@ -416,7 +419,7 @@ private:
 
             std::cout << (_isLeft ? "├──" : "└──");
 
-            std::cout << _node->key << std::endl;
+            std::cout << _node->key << "(" << _node->count << ")" << std::endl;
 
             m_printTree(_node->LNode, _prefix + (_isLeft ? "│   " : "    "), true); // │
             m_printTree(_node->RNode, _prefix + (_isLeft ? "│   " : "    "), false);
@@ -436,5 +439,4 @@ private:
 
 TREE_NAMESPACE_END
 OWE_NAMESPACE_END
-
 #endif // AVL_HPP
