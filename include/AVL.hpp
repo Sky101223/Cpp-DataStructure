@@ -188,10 +188,11 @@ private:
             _node->LNode = m_insert(_node->LNode, _object);
         }
 #ifndef NO_REPEAT_INSERTION
-        else if (_object >= _node->key) {
+        else if (_object >= _node->key)
 #else
-        else if (_object > _node->key) {
+        else if (_object > _node->key)
 #endif
+        {
             _node->RNode = m_insert(_node->RNode, _object);
         }
         else {
@@ -227,7 +228,7 @@ private:
     /// @brief 遍历
     /// @param _node 
     /// @param _traversalType 有三种模式：前序，中序，后序
-    void m_traverse(const std::shared_ptr<Node>&_node, const TraversalType & _traversalType) const {
+    void m_traverse(const std::shared_ptr<Node>& _node, const TraversalType& _traversalType) const {
         if (_node == nullptr) return;
 
         if (_traversalType == TraversalType::PREORDER) {
@@ -249,7 +250,7 @@ private:
 
     /// @brief 层级遍历
     /// @param _node 
-    void m_levelOrderTraversal(const std::shared_ptr<Node>&_node) const {
+    void m_levelOrderTraversal(const std::shared_ptr<Node>& _node) const {
         if (_node == nullptr) return;
         std::queue<std::shared_ptr<Node>> queue;
         queue.push(_node);
@@ -266,7 +267,7 @@ private:
     /// @param _node 
     /// @param _target 目标节点
     /// @return 如果找到了该子节点，返回true，否则返回false
-    bool m_find(const std::shared_ptr<Node>&_node, const _T & _target) const {
+    bool m_find(const std::shared_ptr<Node>& _node, const _T& _target) const {
         if (_node == nullptr) return false;
 
         if (_node->key == _target) {
@@ -293,7 +294,7 @@ private:
     /// @param _target 目标子节点
     /// @param _currentPath 
     /// @return 返回从根节点到目标子节点的路径
-    std::string m_findPosition(const std::shared_ptr<Node>&_node, const _T & _target, std::string _currentPath) const {
+    std::string m_findPosition(const std::shared_ptr<Node>& _node, const _T& _target, std::string _currentPath) const {
         if (_node == nullptr) return "";
 
         if (_node->key == _target) {
@@ -321,7 +322,7 @@ private:
     /// @param _node 
     /// @param _key 节点值
     /// @return 
-    std::shared_ptr<Node> m_delete(std::shared_ptr<Node>&_node, const _T & _key) {
+    std::shared_ptr<Node> m_delete(std::shared_ptr<Node>& _node, const _T& _key) {
         if (_node == nullptr) {
             return _node;
         }
@@ -382,7 +383,7 @@ private:
     /// @brief 最小节点值
     /// @param _node 
     /// @return 
-    std::shared_ptr<Node> minValueNode(const std::shared_ptr<Node>&_node) {
+    std::shared_ptr<Node> minValueNode(const std::shared_ptr<Node>& _node) {
         std::shared_ptr<Node> current = _node;
 
         while (current->LNode != nullptr) {
@@ -395,7 +396,7 @@ private:
     /// @brief 最大节点值
     /// @param _node 
     /// @return 
-    std::shared_ptr<Node> maxValueNode(const std::shared_ptr<Node>&_node) {
+    std::shared_ptr<Node> maxValueNode(const std::shared_ptr<Node>& _node) {
         std::shared_ptr<Node> current = _node;
 
         while (current->RNode != nullptr) {
@@ -409,7 +410,7 @@ private:
     /// @param _node 
     /// @param _prefix 
     /// @param _isLeft 
-    void m_printTree(const std::shared_ptr<Node>&_node, const std::string & _prefix, bool _isLeft) const {
+    void m_printTree(const std::shared_ptr<Node>& _node, const std::string& _prefix, bool _isLeft) const {
         if (_node != nullptr) {
             std::cout << _prefix;
 
@@ -425,7 +426,7 @@ private:
     /// @brief 获取深度
     /// @param _node 
     /// @return 该树的深度
-    int32_t m_getDepth(const std::shared_ptr<Node>&_node) const {
+    int32_t m_getDepth(const std::shared_ptr<Node>& _node) const {
         if (_node == nullptr) {
             return 0;
         }
