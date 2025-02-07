@@ -4,13 +4,18 @@
 #include <iostream>
 #include <algorithm>
 
+// #define NO_REPEAT_INSERTION // 如果你希望AVL树可以插入重复的值
+
 #include "Memory.hpp"
 #include "ReverseIterator.hpp"
 #include "Array.hpp"
+#include "AVL.hpp"
+
 
 int main(void)
 {
     Owe::Array<char, 13> hello{ 'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '?', '\0' };
+    Owe::Tree::AVLTree<char> helloTree;
 
     for (char& i : hello)
     {
@@ -24,6 +29,7 @@ int main(void)
         i != hello.end(); ++i)
     {
         std::cout << *i << std::endl;
+        helloTree.insert(*i);
     }
 
     for (Owe::Array<char, 13>::reverse_iterator i = hello.rbegin();
@@ -32,6 +38,15 @@ int main(void)
         std::cout << *i;
     }
     std::cout << std::endl;
+
+    helloTree.printTree();
+
+    if (helloTree.find('l')) {
+        std::cout << "Find 'l' path: " << helloTree.findPosition('l') << std::endl;
+    }
+    else {
+        std::cout << "No found 'l'" << std::endl;
+    }
 
     return 0;
 }
